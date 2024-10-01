@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ParaView Glance Test Page</title>
+
+  <style>
+    /* Set the HTML and body to take up 100% of the viewport height and width */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Make the iframe take up the full page */
+    #iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -27,7 +45,7 @@
     }
 
     // Embed the iframe to load the ParaView Glance viewer with the provided file
-    document.write("<iframe src='" + app + "?name=" + fileName + "&url=" + fileUrl + "' id='iframe' width='1100' height='900'></iframe>");
+    document.write("<iframe src='" + app + "?name=" + fileName + "&url=" + fileUrl + "' id='iframe'></iframe>");
   </script>
 
 </body>
