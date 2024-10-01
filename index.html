@@ -8,28 +8,26 @@
 <body>
 
   <script>
-    var app = "https://Caur14.github.io/";
-    var datadir = "https://raw.githubusercontent.com/glancebylnec/glanceFilestest/main/";
+    // Base URL for your Glance app
+    var app = "https://glancebylnec.github.io/";
 
-    // Function to extract the filename from the URL
-    function getFileNameFromUrl() {
-      var url = window.location.href;
-      var fileName = url.substring(url.lastIndexOf('/') + 1);
-      
-      // Check if the file ends with .vtkjs, otherwise return a default file
-      if (fileName.endsWith('.vtkjs')) {
-        return fileName;
-      } else {
-        // Default file if no .vtkjs file is specified
-        return 'drenagem.vtkjs';
-      }
+    // Function to get URL parameters (name and url)
+    function getQueryParam(param) {
+      var urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
     }
 
-    // Get the file name from the URL
-    var file = getFileNameFromUrl();
+    // Get the file name and URL from the parameters
+    var fileName = getQueryParam('name');
+    var fileUrl = getQueryParam('url');
 
-    // Embed the iframe to load the ParaView Glance viewer with the file
-    document.write("<iframe src='" + app + "?name=" + file + "&url=" + datadir + file + "' id='iframe' width='1100' height='900'></iframe>");
+    // If no file URL is provided, use a default file
+    if (!fileUrl) {
+      fileUrl = 'https://raw.githubusercontent.com/Lourencosm/glanceFiles/main/drenagem.vtkjs';
+    }
+
+    // Embed the iframe to load the ParaView Glance viewer with the provided file
+    document.write("<iframe src='" + app + "?name=" + fileName + "&url=" + fileUrl + "' id='iframe' width='1100' height='900'></iframe>");
   </script>
 
 </body>
