@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParaView Glance Test Page</title>
+</head>
+<body>
+
+  <script>
+    var app = "https://glancebylnec.github.io/";
+    var datadir = "https://raw.githubusercontent.com/Lourencosm/glanceFiles/main/";
+
+    // Function to extract the filename from the URL
+    function getFileNameFromUrl() {
+      var url = window.location.href;
+      var fileName = url.substring(url.lastIndexOf('/') + 1);
+      
+      // Check if the file ends with .vtkjs, otherwise return a default file
+      if (fileName.endsWith('.vtkjs')) {
+        return fileName;
+      } else {
+        // Default file if no .vtkjs file is specified
+        return 'drenagem.vtkjs';
+      }
+    }
+
+    // Get the file name from the URL
+    var file = getFileNameFromUrl();
+
+    // Embed the iframe to load the ParaView Glance viewer with the file
+    document.write("<iframe src='" + app + "?name=" + file + "&url=" + datadir + file + "' id='iframe' width='1100' height='900'></iframe>");
+  </script>
+
+</body>
+</html>
